@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -31,7 +32,16 @@ func getCookie(w http.ResponseWriter, r *http.Request) {
 
 //访问服务器时，服务器端产生cookie
 func setCookie(w http.ResponseWriter, r *http.Request) {
-	cookie := http.Cookie{Name: "qyz", Value: "myValue"}
+	validTime := time.Now().Add(time.Second * 5)
+	cookie := http.Cookie{
+		Name:  "qyz",
+		Value: "myValue",
+		//HttpOnly: true, //设置不能通过js脚本获取
+		//Path:     "/abc/", //设置/abc开头 及其子路由可以获取到cookie
+		//MaxAge:   3, //设置3s有效，默认关闭浏览器失效（有的浏览器不支持该属性）
+		//Expires:time.Date(2019,10,26,19,16,1,1,time.Local), //设置有效期到该时间
+		Expires: validTime, //设置有效期5s
+	}
 	http.SetCookie(w, &cookie)
 	Welcome(w, r)
 }

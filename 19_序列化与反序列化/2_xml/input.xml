@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persons>
+    <person name="陈钰琪" age="24">
+        <career>演员</career>
+        <interests>
+            <interest>跳舞</interest>
+            <interest>演戏</interest>
+        </interests>
+    </person>
+    <person name="邓紫棋" age="25">
+        <career>歌手</career>
+        <interests>
+            <interest>唱歌</interest>
+            <interest>美食</interest>
+        </interests>
+    </person>
+</persons>

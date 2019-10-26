@@ -13,9 +13,9 @@ import (
 
 type User struct {
 	ID        int64          `db:"id"`
-	Name      sql.NullString `db:"name"` //数据表中name没有设置为NOT NULL,所以name可能为null,在查询过程中会返回nil，如果是string类型则无法接收nil,但sql.NullString则可以接收nil值
-	Age       sql.NullInt64  `db:"age"`
-	Address   sql.NullString `db:"address"`
+	Name      sql.NullString `db:"name"`    //数据表中name没有设置为NOT NULL,所以name可能为null,在查询过程中会返回nil，如果是string类型则无法接收nil,但sql.NullString则可以接收nil值
+	Age       sql.NullInt64  `db:"age"`     //实际使用时可以结构体中正常使用基本类型，在查询执行  rows.Scan(&s) 前定义变量 var s sql.NullString 和结构体 user := new(User)
+	Address   sql.NullString `db:"address"` //执行rows.Scan(&s) 后 user.Name = s.String
 	CreatTime time.Time      `db:"creatTime"`
 }
 

@@ -13,6 +13,7 @@ type User struct {
 }
 
 func main() {
+	//请求路径 http://127.0.0.1:8081
 	http.HandleFunc("/", Welcome)
 
 	//使文件服务生效

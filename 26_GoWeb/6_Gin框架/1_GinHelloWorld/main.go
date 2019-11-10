@@ -6,6 +6,7 @@ import "github.com/gin-gonic/gin"
 func main() {
 	engine := gin.Default()
 
+	//GET请求 http://localhost:8888/hello
 	engine.GET("/hello", func(c *gin.Context) {
 		//返回字节数组
 		c.Writer.Write([]byte("hello you are welcome! \n"))

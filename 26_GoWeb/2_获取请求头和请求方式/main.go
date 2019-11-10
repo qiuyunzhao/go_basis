@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-//get 请求：localhost:8081/param?name=zhangSan&age=18
+//get 请求：http://localhost:8081/param?name=zhangSan&age=18
 func main() {
 	http.HandleFunc("/param", Parm)
 	http.ListenAndServe("127.0.0.1:8081", nil)

@@ -8,16 +8,16 @@ func main() {
 	// 路由组: G1
 	rg1 := engine.Group("/user")
 	{
-		rg1.POST("/register", register) //localhost:8888/user/register
-		rg1.POST("/login", login)       //localhost:8888/user/login
-		rg1.DELETE("/:id", deleteUser)  //localhost:8888/user/111
+		rg1.POST("/register", register) //http://localhost:8888/user/register
+		rg1.POST("/login", login)       //http://localhost:8888/user/login
+		rg1.DELETE("/:id", deleteUser)  //http://localhost:8888/user/111
 	}
 
 	// 路由组: G2
 	rg2 := engine.Group("/goods")
 	{
-		rg2.POST("/sell", sell) //localhost:8888/goods/sell
-		rg2.POST("/buy", buy)   //localhost:8888/goods/buy
+		rg2.POST("/sell", sell) //http://localhost:8888/goods/sell
+		rg2.POST("/buy", buy)   //http://localhost:8888/goods/buy
 	}
 
 	engine.Run(":8888") // 监听并在 0.0.0.0:8888 上启动服务

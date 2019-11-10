@@ -9,12 +9,20 @@ func main() {
 	engine := gin.Default() //Default 使用 Logger 和 Recovery 中间件 ; engine:=gin.New()不使用默认中间件
 
 	//------------------------------------- 2.该方式比 Handle 方法更常用-------------------------------------------------
-	//GET请求 localhost:8888/login?name=qyz
+	//GET请求 http://localhost:8888/login?name=qyz
 	engine.GET("/login", login)
-	//POST请求 localhost:8888/login1   请求体 username  password
+
+	//POST请求 http://localhost:8888/login1   请求体 username  password
 	engine.POST("/login1", login1)
-	//DELETE请求 localhost:8888/user/123456
+
+	//DELETE请求 http://localhost:8888/user/123456
 	engine.DELETE("/user/:id", deleteUser)
+
+	//范绑定请求，匹配以 /login 开头的GET路由  http://localhost:8888/login/ji?name=qyz
+	engine.GET("/login/*action", startWith)
+
+	//Any请求，匹配任何请求方式 http://localhost:8888/any
+	engine.Any("/any", anyType)
 
 	engine.Run(":8888") // 监听并在 0.0.0.0:8888 上启动服务
 }
@@ -56,4 +64,24 @@ func deleteUser(context *gin.Context) {
 	userID := context.Param("id")
 	//给请求端返回数据
 	context.Writer.Write([]byte("解析接口:" + path + "\t 获取变量参数id的值：" + userID))
+}
+
+//匹配以 /login 开头的GET路由
+func startWith(context *gin.Context) {
+	//获取解析接口
+	path := context.FullPath()
+	//获取请求参数
+	requestParam := context.DefaultQuery("name", "默认值") //获取不到时带默认值
+	//给请求端返回数据
+	context.Writer.Write([]byte("解析接口:" + path + "\t 获取到请求参数为：" + requestParam))
+}
+
+//匹配任何请求方式
+func anyType(context *gin.Context) {
+	//获取解析接口
+	path := context.FullPath()
+	//获取请求参数
+	requestParam := context.DefaultQuery("name", "默认值") //获取不到时带默认值
+	//给请求端返回数据
+	context.Writer.Write([]byte("解析接口:" + path + "\t 获取到请求参数为：" + requestParam))
 }

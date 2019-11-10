@@ -9,9 +9,9 @@ func main() {
 	engine := gin.Default() //Default 使用 Logger 和 Recovery 中间件 ; engine:=gin.New()不使用默认中间件
 
 	//---------------------------------------- 1.Handle 方法请求---------------------------------------------------------
-	//GET请求 localhost:8888/login?name=qyz
+	//GET请求 http://localhost:8888/login?name=qyz
 	engine.Handle("GET", "/login", login)
-	//POST请求 localhost:8888/login1   请求体 username  password
+	//POST请求 http://localhost:8888/login1   请求体 username  password
 	engine.Handle("POST", "/login1", login1)
 
 	engine.Run(":8888") // 监听并在 0.0.0.0:8888 上启动服务

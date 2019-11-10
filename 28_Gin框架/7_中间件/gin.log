@@ -1,0 +1,7 @@
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /login1                   --> main.login1 (2 handlers)
+[GIN-debug] Listening and serving HTTP on :8888
+[GIN] 2019/11/10 - 12:54:22 | 200 |            0s |             ::1 | GET      /login1?name=qyz&password=1234&phone=17615110273&age=18

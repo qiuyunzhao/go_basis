@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"AggregationPipelineTest.author"}],"uuid":"08f311f9e26c47f8a6754e629385c20f"}

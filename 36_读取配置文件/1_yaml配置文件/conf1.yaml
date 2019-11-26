@@ -1,0 +1,31 @@
+#结构体类型配置文件
+
+#  在":"后边一定要有空格；
+#  不加 yaml 标签 配置文件中所有字母要小写，结构体属性首字母要大写
+#  “-” 表示数组中的一员
+
+ipport: 192.168.2.95:10000
+startsendtime: 2017-01-02 08:08:08
+sendmaxcountperday: 100
+devices:
+  - devid: 123456789
+    nodes:
+      - pkid: 0
+        bkid: 0
+        index: 0
+        minvalue: 0
+        maxvalue: 60
+        datatype: normal
+      - pkid: 1
+        bkid: 1
+        index: 1
+        datatype: boolean
+  - devid: 10001
+    nodes:
+      - pkid: 2
+        bkid: 2
+        index: 2
+        datatype: boolean
+warnfrequency: 10
+sendfrequency: 10
+#  原文链接：https://blog.csdn.net/wm5920/article/details/77198153

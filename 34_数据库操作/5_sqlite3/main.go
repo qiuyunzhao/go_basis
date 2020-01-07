@@ -5,6 +5,7 @@ import (
 	"go_code/34_数据库操作/5_sqlite3/model"
 )
 
+// 必看 http://note.youdao.com/noteshare?id=a459d518fd9d284a838d5e37beadba1b
 func main() {
 
 	model.InitSQLiteDB()

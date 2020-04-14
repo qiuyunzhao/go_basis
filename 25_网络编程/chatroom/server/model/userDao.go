@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/garyburd/redigo/redis"
-	"go_code/23_网络编程/chatroom/common/message"
+	"go_basis/25_网络编程/chatroom/common/message"
 )
 
 //我们在服务器启动后，就初始化一个userDao实例，

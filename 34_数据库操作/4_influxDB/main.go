@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	client "github.com/influxdata/influxdb1-client/v2"
-	"go_code/34_数据库操作/4_influxDB/influxUtils"
+	"go_basis/34_数据库操作/4_influxDB/influxUtils"
 	"math/rand"
 	"time"
 )

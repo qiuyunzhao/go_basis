@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"go_code/23_网络编程/chatroom/common/message"
-	process2 "go_code/23_网络编程/chatroom/server/process"
-	"go_code/23_网络编程/chatroom/server/utils"
+	"go_basis/25_网络编程/chatroom/common/message"
+	process2 "go_basis/25_网络编程/chatroom/server/process"
+	"go_basis/25_网络编程/chatroom/server/utils"
 	"net"
 	//"go_code/25_网络编程/chatroom/server/process"
 	"io"

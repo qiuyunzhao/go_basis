@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go_code/16_结构体（似java的类）/6_封装（工厂模式）/model"
+	"go_basis/16_结构体（似java的类）/6_封装（工厂模式）/model"
 )
 
 func main() {

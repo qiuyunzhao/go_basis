@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"go_code/34_数据库操作/1_Mongo/mongoUtils"
+	"go_basis/34_数据库操作/1_Mongo/mongoUtils"
 	"gopkg.in/mgo.v2/bson"
 	"log"
 )

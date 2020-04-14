@@ -1,7 +1,7 @@
 package model
 
 import (
-	"go_code/23_网络编程/chatroom/common/message"
+	"go_basis/25_网络编程/chatroom/common/message"
 	"net"
 )
 

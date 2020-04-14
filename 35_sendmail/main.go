@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go_code/35_sendmail/mail"
+	"go_basis/35_sendmail/mail"
 	"log"
 )
 

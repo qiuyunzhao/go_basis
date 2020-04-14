@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go_code/23_网络编程/chatroom/client/process"
+	"go_basis/25_网络编程/chatroom/client/process"
 	"os"
 )
 

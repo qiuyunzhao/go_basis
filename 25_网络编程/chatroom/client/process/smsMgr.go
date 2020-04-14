@@ -3,7 +3,7 @@ package process
 import (
 	"encoding/json"
 	"fmt"
-	"go_code/23_网络编程/chatroom/common/message"
+	"go_basis/25_网络编程/chatroom/common/message"
 )
 
 func outputGroupMes(mes *message.Message) { //这个地方mes一定SmsMes

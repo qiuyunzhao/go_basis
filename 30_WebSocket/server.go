@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gorilla/websocket"
-	"go_code/30_WebSocket/ws"
+	"go_basis/30_WebSocket/ws"
 	"net/http"
 )
 

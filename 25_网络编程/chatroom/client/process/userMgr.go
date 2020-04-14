@@ -2,8 +2,8 @@ package process
 
 import (
 	"fmt"
-	"go_code/23_网络编程/chatroom/client/model"
-	"go_code/23_网络编程/chatroom/common/message"
+	"go_basis/25_网络编程/chatroom/client/model"
+	"go_basis/25_网络编程/chatroom/common/message"
 )
 
 //客户端要维护的map

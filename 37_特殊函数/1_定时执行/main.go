@@ -2,13 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/robfig/cron"
+	"github.com/robfig/cron/v3"
 	"log"
 	"time"
 )
 
 func main() {
-	function1() //expected exactly 5 fields, found 6: [*/5 * * * * ?] 如果报错参看下边方法
+	function1() //expected exactly 5 fields, found 6: [*/5 * * * * ?] 如果报错参看下边方法-不支持秒级
 	//errResolve()
 }
 

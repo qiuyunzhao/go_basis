@@ -1,4 +1,4 @@
-package __定时执行
+package main
 
 import (
 	"fmt"

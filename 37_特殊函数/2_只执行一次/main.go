@@ -33,7 +33,7 @@ func main() {
 	for j := 0; j < 3; j++ {
 		once.Do(once2)
 		fmt.Println("j=", j)
-		//once = sync.Once{} //可以放弃只执行一次
+		//once = sync.Once{} //置空，可以放弃只执行一次
 		time.Sleep(1000)
 	}
 

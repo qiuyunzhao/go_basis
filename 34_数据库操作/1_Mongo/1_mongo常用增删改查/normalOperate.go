@@ -7,12 +7,15 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
+//驱动官方文档： https://godoc.org/gopkg.in/mgo.v2
+
 type User struct {
 	Id        bson.ObjectId `bson:"_id"`
 	Username  string        `bson:"name"`
 	Password  string        `bson:"pass"`
 	Age       int64         `bson:"age"`
 	Interests []string      `bson:"interests"`
+	Friends   []User        `bson:"friends"`
 }
 
 const (
@@ -34,6 +37,16 @@ var user2 = User{
 	Password:  "666666",
 	Age:       25,
 	Interests: []string{"唱歌", "演戏", "跳舞"},
+	Friends:   []User{user1},
+}
+
+var user3 = User{
+	Id:        bson.NewObjectId(),
+	Username:  "李沁",
+	Password:  "88667",
+	Age:       25,
+	Interests: []string{"吃饭", "睡觉", "综艺"},
+	Friends:   []User{user1, user2},
 }
 
 //---------------------------------------------------  插入数据 ---------------------------------------------------------
@@ -177,7 +190,7 @@ func findOneByField() (error, User) {
 	defer db.CloseDB()
 	var res User
 
-	//err = db.Collection.Find(bson.M{"name": "陈钰琪"}).One(&res) //查询 name=小明 的完整数据
+	//err = db.Collection.Find(bson.M{"name": "陈钰琪"}).One(&res) //查询 name=陈钰琪 的完整数据
 	err = db.Collection.Find(bson.M{"name": "陈钰琪"}).Select(bson.M{"_id": 0, "name": 1, "age": 1}).One(&res) //查询一条指定字段数据
 
 	return err, res
@@ -194,4 +207,16 @@ func findManyByField() (error, []User) {
 	err = db.Collection.Find(bson.M{"name": "陈钰琪"}).Select(bson.M{"_id": 0, "name": 1, "age": 1}).All(&res) //查询多条指定字段数据 注意：多个Select().Select()后边的Select会覆盖前边
 
 	return err, res
+}
+
+// 嵌套查询
+func nestedQuery() (error, []User) {
+	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	err := db.ConnDB()
+	defer db.CloseDB()
+	var users []User
+
+	err = db.Collection.Find(bson.M{"friends.friends.name": "陈钰琪", "friends.friends.age": 24}).Select(bson.M{"friends.friends": 1}).All(&users) //查询一条指定字段数据
+
+	return err, users
 }

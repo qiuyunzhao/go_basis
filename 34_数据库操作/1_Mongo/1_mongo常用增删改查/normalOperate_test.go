@@ -16,7 +16,7 @@ import (
 
 //----------------------------------- 新增 ------------------------------------
 func TestInsert(t *testing.T) {
-	err := Insert(user1, user2) //插入数据，一次可以插入多个
+	err := Insert(user1, user2, user3) //插入数据，一次可以插入多个
 
 	if err != nil {
 		log.Println(err)
@@ -55,8 +55,9 @@ func TestQuery(t *testing.T) {
 	//err, data := FindAll() //查询全部
 	//err, data := findById() //根据 _id 查询
 	//err, data := findOneByField() //根据字段查询一条
-	err, data := findManyByField() //根据字段查询多条
+	//err, data := findManyByField() //根据字段查询多条
 
+	err, data := nestedQuery() //嵌套查询
 	//----------------------------------------------------------------------------
 	if err != nil {
 		log.Println(err)

@@ -1,0 +1,96 @@
+[
+  {
+    "_id": "5dccf85cacf2b2285c527a89",
+    "name": "鼠标",
+    "manufacturer": "小米",
+    "price": 20,
+    "count": 30,
+    "class": [
+      {
+        "name": "无线",
+        "description": "10m有效"
+      },
+      {
+        "name": "有线",
+        "description": "线长1.5m"
+      }
+    ]
+  },
+  {
+    "_id": "5dccf874acf2b2285c527a8a",
+    "name": "键盘",
+    "manufacturer": "小米",
+    "price": -100,
+    "count": 70
+  },
+  {
+    "_id": "5dccf87bacf2b2285c527a8b",
+    "name": "小米手机",
+    "manufacturer": "小米",
+    "price": 2999,
+    "count": 10
+  },
+  {
+    "_id": "5dccf885acf2b2285c527a8c",
+    "name": "OPPO手机",
+    "manufacturer": "OPPO",
+    "price": 3299,
+    "count": 20
+  },
+  {
+    "_id": "5dccf891acf2b2285c527a8d",
+    "name": "华为手机",
+    "manufacturer": "华为",
+    "price": 4999,
+    "count": 50
+  },
+  {
+    "_id": "5dccf8a1acf2b2285c527a8e",
+    "name": "荣耀手机",
+    "manufacturer": "华为",
+    "price": 1999,
+    "count": 60
+  },
+  {
+    "_id": "5dccf8aaacf2b2285c527a8f",
+    "name": "华为平板",
+    "manufacturer": "华为",
+    "price": 2999,
+    "count": 55
+  },
+  {
+    "_id": "5dccf8b2acf2b2285c527a90",
+    "name": "小米平板",
+    "manufacturer": "小米",
+    "price": 1999,
+    "count": 65
+  },
+  {
+    "_id": "5dccf8b9acf2b2285c527a91",
+    "name": "联想电脑",
+    "manufacturer": "联想",
+    "price": 5999,
+    "count": 77
+  },
+  {
+    "_id": "5dccf8c4acf2b2285c527a92",
+    "name": "苹果电脑",
+    "manufacturer": "苹果",
+    "price": 13999,
+    "count": 2
+  },
+  {
+    "_id": "5dccf8ccacf2b2285c527a93",
+    "name": "华为电脑",
+    "manufacturer": "华为",
+    "price": 4899,
+    "count": 18
+  },
+  {
+    "_id": "5dce4f05164a5b4570189844",
+    "name": "小米手机",
+    "manufacturer": "小米",
+    "price": 2999,
+    "count": 10
+  }
+]

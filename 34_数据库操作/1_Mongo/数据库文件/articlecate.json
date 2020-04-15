@@ -1,0 +1,14 @@
+[
+  {
+    "_id": "5dcccb22acf2b2285c527a7e",
+    "cateId": "222222",
+    "title": "国内新闻",
+    "description": "这里是国内新闻专栏"
+  },
+  {
+    "_id": "5dcccb3eacf2b2285c527a7f",
+    "cateId": "111111",
+    "title": "国外新闻",
+    "description": "这里是国外新闻专栏"
+  }
+]

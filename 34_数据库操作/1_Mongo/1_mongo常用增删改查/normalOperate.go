@@ -1,12 +1,10 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"go_basis/34_数据库操作/1_Mongo/mongoUtils"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
-	"log"
 )
 
 type User struct {
@@ -38,51 +36,6 @@ var user2 = User{
 	Interests: []string{"唱歌", "演戏", "跳舞"},
 }
 
-func main() {
-	//----------------------------------- 新增 ------------------------------------
-	//err := Insert(user1, user2) //插入数据，一次可以插入多个
-	//if err != nil {
-	//	log.Println(err)
-	//}
-
-	//----------------------------------- 删除 ------------------------------------
-	//没有找到 err 为 not found
-	//err := removeById() //更具 _id 删除一条
-	//err := removeOneByField() //更具属性删除一条
-	//_, err := removeAllByField() //更具属性删除多条
-	//if err != nil {
-	//	log.Println(err)
-	//}
-
-	//----------------------------------- 修改 ------------------------------------
-	//update 没有找到 err为not found ；upset 没有找到会新增
-	//err := updateById() //根据Id修改
-	//_, err := upsetById() //根据Id修改,没有会新增
-	//err := UpdateOneByField()    //修改满足条件的一条数据
-	_, err := UpdateAllByField() //修改满足条件的所有条数据
-
-	if err != nil {
-		log.Println(err)
-	}
-	//----------------------------------- 查询 ------------------------------------
-	//没有找到 err 为 not found
-	err, data := FindAll() //查询全部
-	//err, data := findById() //根据 _id 查询
-	//err, data := findOneByField() //根据字段查询一条
-	//err, data := findManyByField() //根据字段查询多条
-
-	//----------------------------------------------------------------------------
-	if err != nil {
-		log.Println(err)
-	}
-	result, err := json.Marshal(data)
-	if err != nil {
-		log.Println(err)
-	} else {
-		fmt.Println(string(result))
-	}
-}
-
 //---------------------------------------------------  插入数据 ---------------------------------------------------------
 func Insert(data ...interface{}) error {
 	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
@@ -100,13 +53,13 @@ func Insert(data ...interface{}) error {
 
 //---------------------------------------------------  删除数据 ---------------------------------------------------------
 //根据 _id 删除数据
-func removeById() error {
+func removeById(_id string) error {
 	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 
-	err = db.Collection.Remove(bson.M{"_id": bson.ObjectIdHex("5dcec9ca43ea2b21ac51605d")})
-	err = db.Collection.RemoveId(bson.ObjectIdHex("5dcec9ca43ea2b21ac51605e"))
+	//err = db.Collection.Remove(bson.M{"_id": bson.ObjectIdHex(_id)})
+	err = db.Collection.RemoveId(bson.ObjectIdHex(_id))
 
 	return err
 }
@@ -117,7 +70,7 @@ func removeOneByField() error {
 	err := db.ConnDB()
 	defer db.CloseDB()
 
-	err = db.Collection.Remove(bson.M{"name": "小明"}) //删除满足条件的第一条
+	err = db.Collection.Remove(bson.M{"name": "陈钰琪"}) //删除满足条件的第一条
 	//err = db.Collection.Remove(nil)  //修改条件为nil会删除第一条
 
 	return err
@@ -143,7 +96,7 @@ func updateById() error {
 	err := db.ConnDB()
 	defer db.CloseDB()
 
-	err = db.Collection.UpdateId(bson.ObjectIdHex("5dcec4afcfb0291c58d51084"), bson.M{"$set": bson.M{"name": "小刚", "pass": "pass"}})
+	err = db.Collection.UpdateId(bson.ObjectIdHex("5e9662ae300118610c634486"), bson.M{"$set": bson.M{"name": "小刚", "pass": "pass"}})
 	//err = db.Collection.Update(bson.M{"_id": bson.ObjectIdHex("5dcec4afcfb0291c58d51084")}, bson.M{"$set": bson.M{"name": "小红","pass": "111"}})
 
 	return err
@@ -207,7 +160,7 @@ func findById() (error, User) {
 	defer db.CloseDB()
 	var res User
 
-	err = db.Collection.FindId(bson.ObjectIdHex("5da08b1743ea2b15f473df29")).One(&res)
+	err = db.Collection.FindId(bson.ObjectIdHex("5e9664c830011837a4963085")).One(&res)
 
 	return err, res
 }
@@ -224,8 +177,8 @@ func findOneByField() (error, User) {
 	defer db.CloseDB()
 	var res User
 
-	//err = db.Collection.Find(bson.M{"name": "小红"}).One(&res) //查询 name=小明 的完整数据
-	err = db.Collection.Find(bson.M{"name": "小红"}).Select(bson.M{"_id": 0, "name": 1, "age": 1}).One(&res) //查询一条指定字段数据
+	//err = db.Collection.Find(bson.M{"name": "陈钰琪"}).One(&res) //查询 name=小明 的完整数据
+	err = db.Collection.Find(bson.M{"name": "陈钰琪"}).Select(bson.M{"_id": 0, "name": 1, "age": 1}).One(&res) //查询一条指定字段数据
 
 	return err, res
 }
@@ -238,7 +191,7 @@ func findManyByField() (error, []User) {
 	var res []User
 
 	//err = db.Collection.Find(nil).All(&res) //查询多条完整数据
-	err = db.Collection.Find(bson.M{"name": "小明"}).Select(bson.M{"_id": 0, "name": 1, "age": 1}).All(&res) //查询多条指定字段数据 注意：多个Select().Select()后边的Select会覆盖前边
+	err = db.Collection.Find(bson.M{"name": "陈钰琪"}).Select(bson.M{"_id": 0, "name": 1, "age": 1}).All(&res) //查询多条指定字段数据 注意：多个Select().Select()后边的Select会覆盖前边
 
 	return err, res
 }

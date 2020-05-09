@@ -25,7 +25,7 @@ func main() {
 	var b2 float32 = 2.1
 	x = b2 //空接口，可以接收任意类型
 	//类型断言检测机制(不会报panic终止程序执行)
-	if y, ok := x.(float64); ok {
+	if y, ok := x.(float32); ok {
 		fmt.Println("convert success")
 		fmt.Printf("y 的类型是 %T 值是=%v", y, y)
 	} else {

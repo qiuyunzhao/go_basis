@@ -153,7 +153,7 @@ func UpdateAllByField() (*mgo.ChangeInfo, error) {
 	return changeInfo, err
 }
 
-//---------------------------------------------------  查询数据 ---------------------------------------------------------
+//---------------------------------------------------  查询数据 查询不到返回 err, err.Error() 为"not found" ---------------------------------------------------------
 //查询全部
 func FindAll() (error, []User) {
 	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}

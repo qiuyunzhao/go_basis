@@ -7,6 +7,7 @@ import (
 
 // 聚合管道用于复杂查询
 // mongoDB聚合管道(多个管道表达式则在上一个表达式基础上进行下一个表达式的筛选)
+// 局和管道查询不到返回nil
 // 参考： https://www.jianshu.com/p/f1d4300c0067
 
 const databaseName = "AggregationPipelineTest"

@@ -42,7 +42,8 @@ func TestUpdate(t *testing.T) {
 	//_, err := upsetById() //根据Id修改,没有会新增
 
 	//err := UpdateOneByField() //修改满足条件的一条数据
-	_, err := UpdateAllByField() //修改满足条件的所有条数据
+	//_, err := UpdateAllByField() //修改满足条件的所有条数据
+	err := nestedUpdate() // 嵌套更改指定字段
 
 	if err != nil {
 		log.Println(err)
@@ -56,8 +57,8 @@ func TestQuery(t *testing.T) {
 	//err, data := findById() //根据 _id 查询
 	//err, data := findOneByField() //根据字段查询一条
 	//err, data := findManyByField() //根据字段查询多条
-
 	err, data := nestedQuery() //嵌套查询
+	//err, data := OrQuery() // 查询条件
 	//----------------------------------------------------------------------------
 	if err != nil {
 		log.Println(err)

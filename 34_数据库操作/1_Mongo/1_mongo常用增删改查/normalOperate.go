@@ -153,6 +153,27 @@ func UpdateAllByField() (*mgo.ChangeInfo, error) {
 	return changeInfo, err
 }
 
+// 嵌套更改 https://blog.csdn.net/liuchangqing123/article/details/48106493
+func nestedUpdate() error {
+	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	err := db.ConnDB()
+	defer db.CloseDB()
+
+	// 修改 friends[0] 的 pass
+	//_, err = db.Collection.UpdateAll(bson.M{"friends.friends.name": "陈钰琪", "friends.friends.age": 24}, bson.M{"$set": bson.M{"friends.0.pass": "667788"}})
+	//if err != nil {
+	//	return err
+	//}
+
+	// $ 通配符 匹配数组的多个 不能用在最后一级
+	_, err = db.Collection.UpdateAll(bson.M{"friends.friends.name": "陈钰琪", "friends.friends.age": 24}, bson.M{"$set": bson.M{"friends.$.friends.0.pass": "02"}})
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 //---------------------------------------------------  查询数据 查询不到返回 err, err.Error() 为"not found" ---------------------------------------------------------
 //查询全部
 func FindAll() (error, []User) {
@@ -217,6 +238,18 @@ func nestedQuery() (error, []User) {
 	var users []User
 
 	err = db.Collection.Find(bson.M{"friends.friends.name": "陈钰琪", "friends.friends.age": 24}).Select(bson.M{"friends.friends": 1}).All(&users) //查询一条指定字段数据
+
+	return err, users
+}
+
+// 查询条件或运算 https://blog.csdn.net/LightUpHeaven/article/details/82663146
+func OrQuery() (error, []User) {
+	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	err := db.ConnDB()
+	defer db.CloseDB()
+	var users []User
+
+	err = db.Collection.Find(bson.D{{"$or", []interface{}{bson.D{{"name", "祝绪丹"}}, bson.D{{"name", "李沁"}}}}}).All(&users) //查询一条指定字段数据
 
 	return err, users
 }

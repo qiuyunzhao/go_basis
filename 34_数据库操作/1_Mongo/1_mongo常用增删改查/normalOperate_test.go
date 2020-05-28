@@ -57,8 +57,8 @@ func TestQuery(t *testing.T) {
 	//err, data := findById() //根据 _id 查询
 	//err, data := findOneByField() //根据字段查询一条
 	//err, data := findManyByField() //根据字段查询多条
-	err, data := nestedQuery() //嵌套查询
-	//err, data := OrQuery() // 查询条件
+	//err, data := nestedQuery() //嵌套查询
+	err, data := MulticonditionalQuery() // 查询条件
 	//----------------------------------------------------------------------------
 	if err != nil {
 		log.Println(err)

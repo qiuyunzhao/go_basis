@@ -82,6 +82,18 @@ func TestCompare(t *testing.T) {
 	log.Println(string(data))
 }
 
+//--------------------------------------------------- 或运算 ------------------------------------------------------
+func TestOrPipe(t *testing.T) {
+	err, result := OrPipe()
+
+	//将对象，转换成json格式展示
+	data, err := json.Marshal(result)
+	if err != nil {
+		log.Println("err:\t", err.Error())
+	}
+	log.Println(string(data))
+}
+
 //--------------------------------------------------- $skip管道 ----------------------------------------------------
 //$skip 在聚合管道中跳过指定数量的文档，并返回余下的文档(效率低,慎用)
 func TestSkip(t *testing.T) {

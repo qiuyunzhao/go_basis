@@ -243,13 +243,13 @@ func nestedQuery() (error, []User) {
 }
 
 // 查询条件或运算 https://blog.csdn.net/LightUpHeaven/article/details/82663146
-func OrQuery() (error, []User) {
+func MulticonditionalQuery() (error, []User) {
 	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var users []User
 
-	err = db.Collection.Find(bson.D{{"$or", []interface{}{bson.D{{"name", "祝绪丹"}}, bson.D{{"name", "李沁"}}}}}).All(&users) //查询一条指定字段数据
+	err = db.Collection.Find(bson.D{{"$or", []interface{}{bson.D{{"name", "祝绪丹"}}, bson.D{{"name", "李沁"}}}}}).All(&users)
 
 	return err, users
 }

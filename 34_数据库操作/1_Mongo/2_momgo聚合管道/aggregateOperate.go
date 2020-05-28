@@ -141,6 +141,21 @@ func comparePipe() (error, []Commodity) {
 	return err, commoditys
 }
 
+//--------------------------------------------------- 条件$or ------------------------------------------------------
+func OrPipe() (error, []Commodity) {
+	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: "commodity"}
+	err := db.ConnDB()
+	defer db.CloseDB()
+	var commoditys []Commodity
+
+	pipe := []bson.M{
+		{"$match": bson.D{{"$or", []interface{}{bson.D{{"name", "苹果电脑"}}, bson.D{{"name", "华为电脑"}}, bson.D{{"name", "荣耀手机"}}, bson.D{{"name", "小米手机"}}}}}},
+	}
+
+	err = db.Collection.Pipe(pipe).All(&commoditys)
+	return err, commoditys
+}
+
 // ---------------------------------------------------- $skip 在聚合管道中跳过指定数量的文档，并返回余下的文档(效率低,慎用)
 func skipPipe() (error, []Commodity) {
 	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: "commodity"}

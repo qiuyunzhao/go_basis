@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	file := "go_code/18_文件操作"
+	file := "18_文件操作/sources/赵敏.jpg"
 	fmt.Println(IsExist(file))
 	fmt.Printf("%s is file: %v\n", file, IsFile(file))
 }

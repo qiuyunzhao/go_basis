@@ -242,7 +242,9 @@ func nestedQuery() (error, []User) {
 	return err, users
 }
 
-// 查询条件或运算 https://blog.csdn.net/LightUpHeaven/article/details/82663146
+// 查询条件或运算
+// https://blog.csdn.net/LightUpHeaven/article/details/82663146
+// https://blog.csdn.net/tianwenxue/article/details/106316255
 func MulticonditionalQuery() (error, []User) {
 	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
@@ -252,4 +254,22 @@ func MulticonditionalQuery() (error, []User) {
 	err = db.Collection.Find(bson.D{{"$or", []interface{}{bson.D{{"name", "祝绪丹"}}, bson.D{{"name", "李沁"}}}}}).All(&users)
 
 	return err, users
+}
+
+//根据字段模糊查询
+//https://blog.csdn.net/Nick_666/article/details/81286239?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase
+//option的值包含：
+//  i(不区分大小写)，
+//  m(当使用^与$符号模糊匹配时，作用于屏蔽中间的换行符) ,
+//  x(忽略注释，以#开头 /n结尾)，
+//  s(允许所有字符包括换行符参与模糊匹配)
+func LikeFindByField() (error, []User) {
+	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	err := db.ConnDB()
+	defer db.CloseDB()
+	var res []User
+
+	//err = db.Collection.Find(bson.M{"age": 25, "name": "陈钰琪"}).All(&res) // 条件查询
+	err = db.Collection.Find(bson.M{"age": 25, "name": bson.M{"$regex": "陈", "$options": "$i"}}).All(&res) // 与运算的条件查询
+	return err, res
 }

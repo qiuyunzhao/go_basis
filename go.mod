@@ -3,15 +3,14 @@ module go_basis
 go 1.12
 
 require (
-	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d
 	github.com/garyburd/redigo v1.6.0
 	github.com/gin-gonic/autotls v0.0.0-20200314141124-cc69476aef2a
 	github.com/gin-gonic/gin v1.6.2
-	github.com/go-ole/go-ole v1.2.4 // indirect
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/gorilla/mux v1.7.4
 	github.com/gorilla/websocket v1.4.2
 	github.com/influxdata/influxdb1-client v0.0.0-20191209144304-8bf82d3c094d
+	github.com/kirinlabs/HttpRequest v1.0.5
 	github.com/mattn/go-sqlite3 v2.0.3+incompatible
 	github.com/robfig/cron/v3 v3.0.1
 	github.com/smartystreets/goconvey v1.6.4 // indirect

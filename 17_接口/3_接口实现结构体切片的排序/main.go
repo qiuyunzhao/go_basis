@@ -56,7 +56,7 @@ func main() {
 		fmt.Println(v)
 	}
 
-	//结构体实现了Interface接口,可以调用sort.Sort进行结构体排序
+	//结构体实现了排序Interface接口,可以调用sort.Sort进行结构体排序
 	sort.Sort(heroes)
 
 	fmt.Println("-----------排序后------------")

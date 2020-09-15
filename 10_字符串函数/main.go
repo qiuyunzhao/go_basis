@@ -126,4 +126,30 @@ func main() {
 	b = strings.HasPrefix("ftp://192.168.10.1", "hsp") //true
 	fmt.Printf("b=%v \n", b)
 
+	fmt.Println("------------------------------------------  18  -------------------------------------------------")
+	//测试字符串与unicode码的相互转换
+	testString2unicodeAndUnicode2string()
+
+}
+
+func testString2unicodeAndUnicode2string() {
+	sText := "中文我都会,你怎么样都会吗？"
+	textQuoted := strconv.QuoteToASCII(sText)
+	textUnquoted := textQuoted[1 : len(textQuoted)-1]
+	fmt.Println(textUnquoted)
+
+	sUnicodev := strings.Split(textUnquoted, "\\u")
+	var context string
+	for _, v := range sUnicodev {
+		if len(v) < 1 {
+			continue
+		}
+		temp, err := strconv.ParseInt(v, 16, 32)
+		if err != nil {
+			panic(err)
+		}
+		context += fmt.Sprintf("%c", temp)
+	}
+	fmt.Println(context)
+
 }

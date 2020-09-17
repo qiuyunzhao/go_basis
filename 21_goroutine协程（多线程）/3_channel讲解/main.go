@@ -40,7 +40,7 @@ func main() {
 	fmt.Println("从管道取出的第3个数据：", item3) // 50
 
 	item4, isExit := <-intChan
-	fmt.Println("从管道取出的第4个数据：", item4, "标志：", isExit) // 66 true
+	fmt.Println("从管道取出的第4个数据：", item4, "管道是否关闭的标志：", isExit) // 66 true
 
 	// close(intChan) // 关闭管道后写数据报错 panic: send on closed channel
 

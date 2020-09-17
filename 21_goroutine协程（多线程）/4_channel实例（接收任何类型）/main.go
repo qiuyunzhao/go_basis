@@ -11,25 +11,31 @@ type Cat struct {
 
 func main() {
 
-	//定义一个存放任意数据类型的管道 3个数据
-	//var allChan chan interface{}
-	allChan := make(chan interface{}, 3)
+	fmt.Println("=============================== 1. 存放任意数据类型的管道 ========================================")
 
-	allChan <- 10
-	allChan <- "tom jack"
+	var allTypeChan chan interface{}
+	allTypeChan = make(chan interface{}, 3)
+
+	fmt.Println("=============================== 2. 管道写入数据、取出数据 ========================================")
+
+	allTypeChan <- 10
+
+	allTypeChan <- "tom jack"
+
 	cat := Cat{"小花猫", 4}
-	allChan <- cat
+	allTypeChan <- cat
 
-	//我们希望获得到管道中的第三个元素，则先将前2个推出
-	<-allChan
-	<-allChan
-	newCat := <-allChan
-	fmt.Printf("newCat=%T , newCat=%v\n", newCat, newCat) //从管道中取出的Cat是什么 1_常用时间日期函数.Cat 类型
+	//希望获得到管道中的第三个元素，需先将前2个取出
+	<-allTypeChan
+	<-allTypeChan
+	newCat := <-allTypeChan
+	fmt.Printf("newCat类型=%T , newCat值=%v\n", newCat, newCat) // newCat类型=main.Cat , newCat值={小花猫 4}
 
-	//fmt.Printf("newCat.Name=%v", newCat.Name)	//这种写法是错误的!编译不通过
+	fmt.Println("=============================== 3. 取出数据类型转换 ==============================================")
+
+	//fmt.Printf("newCat.Name=%v", newCat.Name)	 // 类型是interface{}，不是具体结构体类型! 编译不通过
 
 	//使用类型断言
 	a := newCat.(Cat)
-	fmt.Printf("newCat.Name=%v", a.Name)
-
+	fmt.Printf("newCat.Name=%v", a.Name) // newCat.Name=小花猫
 }

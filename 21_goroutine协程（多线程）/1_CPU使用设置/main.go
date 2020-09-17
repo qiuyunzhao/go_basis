@@ -10,6 +10,5 @@ func main() {
 	fmt.Println("cpuNum=", cpuNum)
 
 	//可以自己设置使用多个cpu
-	runtime.GOMAXPROCS(cpuNum - 1)
-	fmt.Println("set use cpuNum= ", cpuNum-1)
+	runtime.GOMAXPROCS(cpuNum - 2)
 }

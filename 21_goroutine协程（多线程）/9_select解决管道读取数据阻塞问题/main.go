@@ -5,25 +5,25 @@ import (
 	"time"
 )
 
-//解决必须先关闭管道才能对管道进行遍历的问题，如果不关闭会阻塞而导致deadlock
+//解决必须先关闭管道才能对管道进行for遍历的问题，如果不关闭会阻塞而导致deadlock
 //使用select可以不用关闭管道，解决从管道取数据的阻塞问题
 func main() {
 
-	//1.定义一个管道 10个数据int
+	//1.定义一个管道可以放入 10个int类型数据
 	intChan := make(chan int, 10)
 	for i := 0; i < 10; i++ {
 		intChan <- i
 	}
 
-	//2.定义一个管道 5个数据string
+	//2.定义一个管道可以放入 5个string类型数据
 	stringChan := make(chan string, 5)
 	for i := 0; i < 5; i++ {
 		stringChan <- "hello" + fmt.Sprintf("%d", i)
 	}
 
-	//传统的方法在遍历管道时，如果不关闭可能会阻塞而导致 deadlock
+	//传统的for循环的方法在遍历管道时，如果不关闭可能会阻塞而导致 deadlock
 
-	//问题：在实际开发中，可能我们不好确定什么时候关闭该管道。可以使用select 方式可以解决
+	//问题：在实际开发中，可能我们不好确定什么时候关闭该管道。可以使用select+标志位 的方式解决
 	finished := false
 	for !finished {
 		select {

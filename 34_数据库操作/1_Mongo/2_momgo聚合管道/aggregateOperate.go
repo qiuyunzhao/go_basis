@@ -53,7 +53,7 @@ type Author struct {
 //------------------ $project 修改输入文档的结构。可以用来重命名、增加或删除域，也可以用于创建计算结果以及嵌套文档。（SELECT）
 
 func projectPipe() (error, []Commodity) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: "commodity"}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: "commodity"}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var commoditys []Commodity
@@ -70,7 +70,7 @@ func projectPipe() (error, []Commodity) {
 //------------------------------------------------------------ $match 用于过滤数据，只输出符合条件的文档。（WHERE、HAVING）
 
 func matchPipe() (error, []Commodity) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: "commodity"}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: "commodity"}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var commoditys []Commodity
@@ -87,7 +87,7 @@ func matchPipe() (error, []Commodity) {
 // ---------------------------------------------------------------------------------------$sort 将输入文档排序（ORDER BY）
 
 func sortPipe() (error, []Commodity) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: "commodity"}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: "commodity"}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var commoditys []Commodity
@@ -104,7 +104,7 @@ func sortPipe() (error, []Commodity) {
 // -------------------------------------------------------------------- $limit 用来限制MongoDB聚合管道返回的文档数（LIMIT）
 
 func limitPipe() (error, []Commodity) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: "commodity"}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: "commodity"}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var commoditys []Commodity
@@ -125,7 +125,7 @@ func limitPipe() (error, []Commodity) {
 // $gt：大于         $lt：小于
 // $gte：大于等于    $lte：小于等于 （可用于判断字符串）
 func comparePipe() (error, []Commodity) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: "commodity"}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: "commodity"}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var commoditys []Commodity
@@ -143,7 +143,7 @@ func comparePipe() (error, []Commodity) {
 
 //--------------------------------------------------- 条件$or ------------------------------------------------------
 func OrPipe() (error, []Commodity) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: "commodity"}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: "commodity"}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var commoditys []Commodity
@@ -158,7 +158,7 @@ func OrPipe() (error, []Commodity) {
 
 // ---------------------------------------------------- $skip 在聚合管道中跳过指定数量的文档，并返回余下的文档(效率低,慎用)
 func skipPipe() (error, []Commodity) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: "commodity"}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: "commodity"}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var commoditys []Commodity
@@ -176,7 +176,7 @@ func skipPipe() (error, []Commodity) {
 // ---------------------------------------------------$group 将集合中的文档分组，可用于统计结果（GROUP BY）(未研究透彻)
 // ------------------------------------- $abs、$max、$min、$avg、$sum、$first、$last、$unwind、$addToSet、$push 配合使用
 func groupPipe() (error, []interface{}) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: "commodity"}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: "commodity"}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var data []interface{}
@@ -207,7 +207,7 @@ func groupPipe() (error, []interface{}) {
 
 // ------------------------------------------------------------------ $lookup 用以引入其它集合的数据，表关联查询（join）
 func lookupPipe() (error, []interface{}) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: "article"}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: "article"}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var data []interface{}

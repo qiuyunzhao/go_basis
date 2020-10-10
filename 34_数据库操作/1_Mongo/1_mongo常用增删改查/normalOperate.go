@@ -51,7 +51,7 @@ var user3 = User{
 
 //---------------------------------------------------  插入数据 ---------------------------------------------------------
 func Insert(data ...interface{}) error {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 
@@ -67,7 +67,7 @@ func Insert(data ...interface{}) error {
 //---------------------------------------------------  删除数据 ---------------------------------------------------------
 //根据 _id 删除数据
 func removeById(_id string) error {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 
@@ -79,7 +79,7 @@ func removeById(_id string) error {
 
 //删除满足条件的一条
 func removeOneByField() error {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 
@@ -91,7 +91,7 @@ func removeOneByField() error {
 
 //删除满足条件的多条
 func removeAllByField() (*mgo.ChangeInfo, error) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 
@@ -105,7 +105,7 @@ func removeAllByField() (*mgo.ChangeInfo, error) {
 //---------------------------------------------------  修改数据 (Upsert,Update用法相同)----------------------------------
 //根据Id修改 没有 err为not found
 func updateById() error {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 
@@ -117,7 +117,7 @@ func updateById() error {
 
 //通过Id修改 没有会将修改的字段新增为一条记录
 func upsetById() (*mgo.ChangeInfo, error) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 
@@ -130,7 +130,7 @@ func upsetById() (*mgo.ChangeInfo, error) {
 
 //修改满足条件的一条数据
 func UpdateOneByField() error {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 
@@ -142,7 +142,7 @@ func UpdateOneByField() error {
 
 //修改满足条件的多条数据
 func UpdateAllByField() (*mgo.ChangeInfo, error) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 
@@ -155,7 +155,7 @@ func UpdateAllByField() (*mgo.ChangeInfo, error) {
 
 // 嵌套更改 https://blog.csdn.net/liuchangqing123/article/details/48106493
 func nestedUpdate() error {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 
@@ -177,7 +177,7 @@ func nestedUpdate() error {
 //---------------------------------------------------  查询数据 查询不到返回 err, err.Error() 为"not found" ---------------------------------------------------------
 //查询全部
 func FindAll() (error, []User) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var res []User
@@ -189,7 +189,7 @@ func FindAll() (error, []User) {
 
 //根据Id进行查询
 func findById() (error, User) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var res User
@@ -206,7 +206,7 @@ func findById() (error, User) {
 	Select({bson.M{"filedname":1})，表示关注该字段则只返回关注字段
 */
 func findOneByField() (error, User) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var res User
@@ -219,7 +219,7 @@ func findOneByField() (error, User) {
 
 //根据普通字段查询(selector,filter可为nil)
 func findManyByField() (error, []User) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var res []User
@@ -232,7 +232,7 @@ func findManyByField() (error, []User) {
 
 // 嵌套查询
 func nestedQuery() (error, []User) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var users []User
@@ -246,7 +246,7 @@ func nestedQuery() (error, []User) {
 // https://blog.csdn.net/LightUpHeaven/article/details/82663146
 // https://blog.csdn.net/tianwenxue/article/details/106316255
 func MulticonditionalQuery() (error, []User) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var users []User
@@ -264,7 +264,7 @@ func MulticonditionalQuery() (error, []User) {
 //  x(忽略注释，以#开头 /n结尾)，
 //  s(允许所有字符包括换行符参与模糊匹配)
 func LikeFindByField() (error, []User) {
-	db := mongoUtils.DbConnection{DatebaseName: databaseName, CollectionName: collectionName}
+	db := mongoUtils.DbConnection{DatabaseName: databaseName, CollectionName: collectionName}
 	err := db.ConnDB()
 	defer db.CloseDB()
 	var res []User

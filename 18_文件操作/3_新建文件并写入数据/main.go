@@ -9,7 +9,7 @@ import (
 //创建一个新文件，写入内容 5句 "hello, Gardon"
 func main() {
 
-	filePath := "go_code/18_文件操作/sources/abc.txt"
+	filePath := "go_basis/18_文件操作/sources/abc.txt"
 
 	//OpenFile(name string, flag int, perm FileMode)   flag：操作模式    perm：操作权限linux有用
 	file, err := os.OpenFile(filePath, os.O_CREATE|os.O_WRONLY, 0666)

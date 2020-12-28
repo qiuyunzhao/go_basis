@@ -45,7 +45,7 @@ type TextCard struct {
 }
 
 func main() {
-	wechatToken := getWechatToken("wwd55bf9fc496beac6", "ygeeu9A10NC0BnFtbs0R1ahTNop4VpBq")
+	wechatToken := getWechatToken("wwd55bf9fc496beac6", "ygeeu9A10NC0BnFtbs0R1ahTNop4VpBq_J4qrn-f24Y")
 	fmt.Println("获取的token：", wechatToken)
 
 	textMsg := TextCardMsg{

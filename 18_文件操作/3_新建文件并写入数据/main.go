@@ -9,7 +9,15 @@ import (
 //创建一个新文件，写入内容 5句 "hello, Gardon"
 func main() {
 
-	filePath := "go_basis/18_文件操作/sources/abc.txt"
+	//filePath := "./18_文件操作/sources/abc.txt" // “./” 表示当前工程路径，可不加
+
+	filePath := "./18_文件操作/sources1/abc.txt" // 文件夹不存在会报错The system cannot find the path specified. 可以递归创建文件夹来解决
+	// 递归创建文件夹
+	err := os.MkdirAll("./18_文件操作/sources1", os.ModePerm)
+	if err != nil {
+		fmt.Printf("os.MkdirAll err=%v\n", err)
+		return
+	}
 
 	//OpenFile(name string, flag int, perm FileMode)   flag：操作模式    perm：操作权限linux有用
 	file, err := os.OpenFile(filePath, os.O_CREATE|os.O_WRONLY, 0666)

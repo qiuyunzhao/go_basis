@@ -2,12 +2,23 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 )
 
 func main() {
 	file := "18_文件操作/sources/赵敏.jpg"
-	fmt.Println(IsExist(file))
+
+	IsExist := IsExist(file)
+	fmt.Println(IsExist)
+
+	if !IsExist {
+		// 递归创建文件夹
+		if err := os.MkdirAll("18_文件操作/sources", os.ModePerm); err != nil {
+			log.Println("os.MkdirAll错误:", err)
+		}
+	}
+
 	fmt.Printf("%s is file: %v\n", file, IsFile(file))
 }
 

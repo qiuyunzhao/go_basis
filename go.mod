@@ -5,13 +5,11 @@ go 1.14
 require (
 	github.com/Chronokeeper/anyxml v0.0.0-20160530174208-54457d8e98c6 // indirect
 	github.com/CloudyKit/fastprinter v0.0.0-20200109182630-33d98a066a53 // indirect
-	github.com/CloudyKit/jet v2.1.2+incompatible // indirect
 	github.com/agrison/go-tablib v0.0.0-20160310143025-4930582c22ee // indirect
 	github.com/agrison/mxj v0.0.0-20160310142625-1269f8afb3b4 // indirect
 	github.com/bndr/gotabulate v1.1.2 // indirect
 	github.com/clbanning/mxj v1.8.4 // indirect
-	github.com/fatih/structs v1.1.0 // indirect
-	github.com/fsnotify/fsnotify v1.4.9 // indirect
+	github.com/cockroachdb/errors v1.8.2
 	github.com/garyburd/redigo v1.6.2
 	github.com/gin-gonic/autotls v0.0.3
 	github.com/gin-gonic/gin v1.6.3
@@ -23,7 +21,6 @@ require (
 	github.com/lib/pq v1.9.0
 	github.com/mattn/go-sqlite3 v1.14.6
 	github.com/robfig/cron/v3 v3.0.1
-	github.com/smartystreets/goconvey v1.6.4 // indirect
 	github.com/syndtr/goleveldb v1.0.0 // indirect
 	github.com/tealeg/xlsx v1.0.5 // indirect
 	github.com/xormplus/builder v0.0.0-20200331055651-240ff40009be // indirect

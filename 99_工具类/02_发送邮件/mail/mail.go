@@ -2,16 +2,17 @@ package mail
 
 import (
 	"gopkg.in/gomail.v2"
+	"regexp"
 	"strconv"
 )
 
 //定义邮箱服务器连接信息(最好配置文件读取)
 //例：QQ邮箱： POP3服务器-pop.qq.com:995   SMTP服务器 smtp.qq.com:465或587  （SMTP密码）授权码：wvvwxxuoojwtbfih
 var mailConn = map[string]string{
-	"host":     "smtp.qq.com",       //发送邮件服务器
-	"port":     "587",               //端口
-	"user":     "1694644469@qq.com", //发件人账号
-	"password": "wvvwxxuoojwtbfih",  //密码或SMTP授权码
+	"host":     "smtp.qq.com",        //发送邮件服务器
+	"port":     "587",                //端口
+	"user":     "16946xx4469@qq.com", //发件人账号
+	"password": "wvvwxxxxxxjwtbfih",  //密码或SMTP授权码
 }
 
 func SendMail(mailTo []string, subject string, body string, attach interface{}) error {
@@ -37,25 +38,9 @@ func SendMail(mailTo []string, subject string, body string, attach interface{}) 
 	return err
 }
 
-//func 1_常用时间日期函数() {
-//	message := gomail.NewMessage()
-//
-//	//邮件内容设置
-//	message.SetHeader("From", "1694644469@qq.com")
-//	message.SetHeader("To", "1102401880@qq.com")
-//	//m.SetAddressHeader("Cc", "dan@example.com", "Dan")
-//	message.SetHeader("Subject", "Hello qyz!")
-//	message.SetBody("text/html", "Hello <b>Bob</b> and <i>Cora</i>!")
-//	message.Attach("attach/code-wallpaper-18.png")
-//
-//	// 发送邮件服务器、端口、发件人账号、发件人密码
-//	// 本QQ邮箱： POP3服务器-pop.qq.com:995   SMTP服务器 smtp.qq.com:465或587  （SMTP密码）授权码：wvvwxxuoojwtbfih
-//	d := gomail.NewDialer("smtp.qq.com", 587, "1694644469@qq.com", "wvvwxxuoojwtbfih")
-//
-//	// Send the email to xxx
-//	if err := d.DialAndSend(message); err != nil {
-//		log.Println(err)
-//	}
-//
-//	fmt.Println("结束")
-//}
+// 电子邮箱验证
+func verifyEmailFormat(email string) bool {
+	pattern := `\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*`
+	reg := regexp.MustCompile(pattern)
+	return reg.MatchString(email)
+}

@@ -3,9 +3,9 @@ package main
 //# 微信推送配置
 //wechat:
 //# 企业ID
-//corpid: wwd55bf9fc496beac6
+//corpid: wwd55bf9xxxxbeac6
 //# 应用的凭证密钥
-//corpsecret: ygeeu9A10NC0BnFtbs0R1ahTNop4VpBq
+//corpsecret: ygeeu9A10NC0BnFxxxxxxahTNop4VpBq_J4qrn
 //# 应用的id
 //agentid: 1000002
 
@@ -45,7 +45,7 @@ type TextCard struct {
 }
 
 func main() {
-	wechatToken := getWechatToken("wwd55bf9fc496beac6", "ygeeu9A10NC0BnFtbs0R1ahTNop4VpBq_J4qrn-f24Y")
+	wechatToken := getWechatToken("wwd55bf9xxxxbeac6", "ygeeu9A10NC0BnFxxxxxxahTNop4VpBq_J4qrn-f24Y")
 	fmt.Println("获取的token：", wechatToken)
 
 	textMsg := TextCardMsg{

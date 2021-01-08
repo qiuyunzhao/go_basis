@@ -8,7 +8,7 @@ import (
 func main() {
 	engine := gin.Default()
 
-	//GET请求 http://127.0.0.2:8888/login1?name=qyz&password=1234&phone=17615110273&age=18
+	//GET请求 http://127.0.0.1:8888/login1?name=qyz&password=1234&phone=17615110273&age=18
 	engine.GET("/login1", login1)
 
 	// 流程：生成本地秘钥->秘钥发给证书颁发机构获取私钥->私钥验证->私钥加密

@@ -10,6 +10,7 @@ func main() {
 	engine.GET("/hello", func(c *gin.Context) {
 		//返回字节数组
 		c.Writer.Write([]byte("hello you are welcome! \n"))
+
 		//返回状态 + json对象(常用)
 		c.JSON(200, gin.H{
 			"message": "欢迎访问！",

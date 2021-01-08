@@ -14,7 +14,7 @@ import (
 //    3. json标签为JSON序列化后字段名称命名
 //       注意：BindJSON()能解析前端JSON请求体 要求标签json与form同名 否则解析失败
 type User struct {
-	Name     string    `json:"name" form:"name" binding:"required"`
+	Name     string    `form:"name" binding:"required" json:"name" `
 	Password string    `form:"password" binding:"required"`
 	Phone    string    `form:"phone"`
 	Age      int       `form:"age"`

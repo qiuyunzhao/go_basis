@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://10.110.84.138:54321/postgres
+    username: postgres
+    password: aaaaaa
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 5
+      idle-timeout: 60000
+      max-lifetime: 180000
+      connection-timeout: 30000

@@ -20,6 +20,7 @@ require (
 	github.com/kirinlabs/HttpRequest v1.1.1
 	github.com/lib/pq v1.9.0
 	github.com/mattn/go-sqlite3 v1.14.6
+	github.com/nacos-group/nacos-sdk-go v1.0.3
 	github.com/robfig/cron/v3 v3.0.1
 	github.com/syndtr/goleveldb v1.0.0 // indirect
 	github.com/tealeg/xlsx v1.0.5 // indirect

@@ -1,0 +1,10 @@
+spring:
+  redis:
+    database: 0
+    #    host: 127.0.0.1
+    host: 10.110.84.138
+    port: 6931
+    password: Test6530
+
+
+

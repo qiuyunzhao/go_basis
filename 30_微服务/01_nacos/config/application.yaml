@@ -1,0 +1,18 @@
+nacos:
+  ipAddr: 10.110.84.138
+  port: 8848
+  namespaceId: boostgo_dev
+  logDir: "30_微服务/01_nacos/nacosUitls/logs"
+  cacheDir: "30_微服务/01_nacos/nacosUitls/caches"
+  discovery:
+    group: DEFAULT_GROUP
+    cluster: DEFAULT
+    serviceName: client-qyz-test
+  config:
+    group: DEFAULT_GROUP
+    serverId: client-iot.yml # 本服务配置项
+    postgresId: boostgo-datasource.yml # pg数据库配置文件
+    redisId: boostgo-redis.yml # redis配置文件
+
+
+

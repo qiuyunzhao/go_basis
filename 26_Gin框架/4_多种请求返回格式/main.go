@@ -47,7 +47,7 @@ func returnDifferentType(context *gin.Context) {
 	//resp := Respone{
 	//	Code:    1,
 	//	Message: "OK",
-	//	Data:    fullPath,
+	//	DataSource:    fullPath,
 	//}
 	//context.JSON(200, &resp)
 

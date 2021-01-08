@@ -9,7 +9,6 @@
 package ginResult
 
 // 错误码规则:
-
 // (1) 错误码需为 > 0 的数;
 //
 // (2) 错误码为 5 位数:
@@ -21,12 +20,12 @@ package ginResult
 
 var (
 	// OK
-	OK = response(200, "ok")
+	OK  = response(200, "ok") // 通用成功
+	Err = response(500, "")   // 通用错误
 
 	// 服务级错误码
-	ErrServer    = response(10001, "本服务异常")
-	ErrParam     = response(10002, "参数有误")
-	ErrSignParam = response(10003, "签名参数有误")
+	ErrParam     = response(10001, "参数有误")
+	ErrSignParam = response(10002, "签名参数有误")
 
 	// 模块级错误码 - 用户模块
 	ErrUserService = response(20100, "用户服务异常")

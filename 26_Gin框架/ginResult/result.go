@@ -18,6 +18,15 @@ type Response struct {
 	Data interface{} `json:"data"` // 返回数据
 }
 
+// 自定义响应信息
+func (res *Response) WithMsg(message string) Response {
+	return Response{
+		Code: res.Code,
+		Msg:  message,
+		Data: res.Data,
+	}
+}
+
 // 追加响应数据
 func (res *Response) WithData(data interface{}) Response {
 	return Response{
@@ -33,7 +42,6 @@ func (res *Response) ToString() string {
 		Code int         `json:"code"`
 		Msg  string      `json:"msg"`
 		Data interface{} `json:"data"`
-		ID   string      `json:"id,omitempty"`
 	}{
 		Code: res.Code,
 		Msg:  res.Msg,
@@ -43,7 +51,7 @@ func (res *Response) ToString() string {
 	return string(raw)
 }
 
-// 响应函数
+// 构造函数
 func response(code int, msg string) *Response {
 	return &Response{
 		Code: code,
